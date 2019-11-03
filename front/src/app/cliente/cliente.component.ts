@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../service/cliente/cliente.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-cliente',
@@ -15,7 +16,17 @@ export class ClienteComponent implements OnInit {
   }
 
   data: any = [];
-  constructor(private service: ClienteService) { }
+  angForm: FormGroup;
+  constructor(private fb: FormBuilder, private service: ClienteService) {
+    this.createForm();
+   }
+
+  createForm() {
+    this.angForm = this.fb.group({
+      email: [''],
+      nombre: ['']
+    });
+  }
 
   ngOnInit() {
     this.get();
@@ -32,7 +43,17 @@ export class ClienteComponent implements OnInit {
     })
   }
 
-  guardar(datos:any){
+  guardar(email:any,nombre:any){
+    debugger
+    if(email==='' || nombre===''){
+      alert('Los valores son requeridos verifique..');
+      return
+    }
+    let datos = {
+      email,
+      nombre
+    }
+
     let data = this.service.guardar(datos)
     data.subscribe((items)=>{
       this.get();

@@ -4,7 +4,7 @@ import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ClienteService } from './service/cliente/cliente.service';
 import { ClienteComponent } from "./cliente/cliente.component";
@@ -19,6 +19,7 @@ import { ClienteComponent } from "./cliente/cliente.component";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ClienteService],
   bootstrap: [AppComponent],
