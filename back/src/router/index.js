@@ -15,4 +15,8 @@ router.post('/correo', function(req,res){
   cliente.correo(req,res,req.body);
 })
 
+router.get('/productos', function(req,res){
+  cliente.productos(req,res,req.body);
+})
+
 module.exports = router;

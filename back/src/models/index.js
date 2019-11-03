@@ -179,4 +179,18 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 }
 
+query.productos = (request, res,params) => {
+  const conn = new sql.ConnectionPool(config);
+  let nombreProcedimientoAlmacenado = 'buscarProductos';
+  conn.connect(function(err) {
+    if (err) throw err;
+    const req = new sql.Request(conn);
+    req.execute(nombreProcedimientoAlmacenado, function(err, response) {
+      if (err) throw err;
+      else conn.close();
+      return res.status(200).send(response.recordset);
+    });
+  });
+};
+
 module.exports = query;

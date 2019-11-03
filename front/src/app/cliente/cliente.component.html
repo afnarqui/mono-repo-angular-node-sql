@@ -20,19 +20,21 @@
             <div class="card-body">
                 <strong *ngIf="data.length>0" class="text-center">Clientes</strong>
                 <ul class="list-group" *ngFor="let items of data">
-                    <li class="cliente__nombre list-group-item text-center">{{items.nombre}}</li>
+                    <li (click)="editarCliente(items)" class="cliente__nombre list-group-item text-center">{{items.nombre}}</li>
                 </ul>
             </div>
         </div>
         <div class="col-12 col-md-4">
             <div class="card-body">
 
-                <strong *ngIf="data.length>0" class="text-center">Productos</strong>
-                <ul class="list-group" *ngFor="let items of data">
-                    <li class="cliente__nombre list-group-item text-center">{{items.nombre}}</li>
+                <strong *ngIf="productos.length>0" class="text-center">Productos</strong>
+                <ul class="list-group" *ngFor="let items of productos">
+                    <li (click)="editarProducto(items)" class="producto__nombre list-group-item text-center mb-3">
+                        <p>{{items.nombre}}</p>
+                        <strong>Valor en puntos: {{items.valorEnPuntos}}</strong>
+                    </li>
                 </ul>
             </div>
         </div>
-
     </div>
 </div>

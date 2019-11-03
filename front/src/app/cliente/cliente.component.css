@@ -3,3 +3,9 @@
     color: #004b80;
     background: darkgray;
 }
+
+.producto__nombre {
+    cursor: pointer;
+    color: white;
+    background: tomato;
+}

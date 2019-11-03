@@ -10,13 +10,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class ClienteComponent implements OnInit {
 
-  datos:any = {
-    nombre:null,
-    email:null,
-  }
-
-  data: any = [];
   angForm: FormGroup;
+  data:any=[];
+  productos:any=[];
   constructor(private fb: FormBuilder, private service: ClienteService) {
     this.createForm();
    }
@@ -30,6 +26,7 @@ export class ClienteComponent implements OnInit {
 
   ngOnInit() {
     this.get();
+    this.buscarProductos();
   }
 
   get(){
@@ -44,9 +41,14 @@ export class ClienteComponent implements OnInit {
   }
 
   guardar(email:any,nombre:any){
-    debugger
+
     if(email==='' || nombre===''){
       alert('Los valores son requeridos verifique..');
+      debugger
+      this.angForm = this.fb.group({
+        email: [''],
+        nombre: ['']
+      });
       return
     }
     let datos = {
@@ -73,5 +75,32 @@ export class ClienteComponent implements OnInit {
         console.log('correo enviado')
       })
     })
+  }
+
+  buscarProductos() {
+    let data = this.service.buscarProductos()
+    data.subscribe((items)=>{
+      this.productos = items
+      console.log(items)
+   },(error)=>{
+      console.log(error)
+    })
+  }
+
+  editarProducto(items){
+    const id = localStorage.getItem('clientesId');
+    if(id===null){
+      alert('debe seleccionar un cliente')
+      return
+    }
+    const clientesId =  Number(clientesId)
+  }
+  editarCliente(items){
+    localStorage.setItem('clientesId',items.clientesId);
+
+    this.angForm = this.fb.group({
+      email: [items.email],
+      nombre: [items.nombre]
+    });
   }
 }

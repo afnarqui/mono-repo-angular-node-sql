@@ -49,4 +49,36 @@ update clientes set nombre=@nombre,email=@email where clientesId=@clientesId
 
 GO
 
+CREATE TABLE productos (
+  productosId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  nombre NVARCHAR(80),
+  valorEnPuntos INT,
+);
+GO
+
+CREATE TABLE ventasPorCliente (
+  ventasPorClienteId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  productosId INT,
+  clientesId INT,
+  puntos INT,
+);
+
+INSERT INTO productos(nombre,valorEnPuntos)
+VALUES('Listones',5),
+('Reductor de altura',8),
+('Largueros de cama',12)
+
+GO
+create procedure buscarProductos
+as
+
+select 
+  productosId,
+  nombre,
+  valorEnPuntos
+from productos
+
+GO
+
+
 SELECT TOP 1 1 

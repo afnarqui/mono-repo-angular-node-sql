@@ -30,4 +30,8 @@ export class ClienteService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<any>(`${this.url}/clientes/`, clientes, { headers });
   }
+
+  buscarProductos() {
+    return this.http.get(`${this.url}productos`)
+  }
 }

@@ -13,4 +13,8 @@ query.correo = (req,res) => {
   cliente.correo(req,res,req.body);
 }
 
+query.productos = (req,res) => {
+  cliente.productos(req,res,req.body);
+}
+
 module.exports = query;
