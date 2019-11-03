@@ -1,0 +1,8 @@
+DB_PORT=elpuerto
+DB_USER=elusuario
+DB_PASSWORD=lacontraseña
+DB_SERVER=elservidor
+DB_DATABASE=labasededatos
+DB_INSTANCENAME=lainstancia
+CORREO=correnenvió
+CLAVE_CORREO=clavecorreo

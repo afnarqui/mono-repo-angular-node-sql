@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+ 
+  basededatos:
+    build:
+      context: ./bd
+    ports:
+      - "1433:1433" 
+    volumes:
+      - d:/developement/:/developement 
+    restart: always        
+    networks:
+      - bb-net
+
+networks:
+  bb-net:
