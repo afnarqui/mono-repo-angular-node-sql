@@ -4,7 +4,7 @@
             <form [formGroup]="angForm">
                 <div class="form-group">
                     <label for="email">Correo</label>
-                    <input type="text" name="email" class="form-control" placeholder="Ingrese un correo" formControlName="email" #email>
+                    <input type="email" name="email" class="form-control" placeholder="Ingrese un correo" formControlName="email" #email>
                 </div>
 
                 <div class="form-group">
@@ -16,11 +16,25 @@
                 </div>
             </form>
         </div>
+        <div class="col-12 col-md-4">
+            <div class="card-body">
+                <strong class="text-center pb-1">Correo: {{correo}}</strong>
+                <br>
+                <strong class="text-center pb-1">Nombre: {{nombrecliente}} </strong>
+                <br>
+                <strong class="text-center pb-1">Valor total: {{valortotal * 1000}}</strong>
+                <br>
+                <ul class="list-group" *ngFor="let items of ventas">
+                    <li class="cliente__nombre list-group-item text-center pb-1 mb-1"> {{items.nombre}} Valor: {{items.puntos * 1000}}</li>
+                </ul>
+
+            </div>
+        </div>
         <div class="col-12 col-md-8">
             <div class="card-body">
                 <strong *ngIf="data.length>0" class="text-center">Clientes</strong>
                 <ul class="list-group" *ngFor="let items of data">
-                    <li (click)="editarCliente(items)" class="cliente__nombre list-group-item text-center">{{items.nombre}}</li>
+                    <li (click)="editarCliente(items)" class="cliente__nombre list-group-item text-center pb-1 mb-1">{{items.nombre}}</li>
                 </ul>
             </div>
         </div>
@@ -29,9 +43,11 @@
 
                 <strong *ngIf="productos.length>0" class="text-center">Productos</strong>
                 <ul class="list-group" *ngFor="let items of productos">
-                    <li (click)="editarProducto(items)" class="producto__nombre list-group-item text-center mb-3">
+                    <li class="producto__nombre list-group-item text-center mb-3">
                         <p>{{items.nombre}}</p>
                         <strong>Valor en puntos: {{items.valorEnPuntos}}</strong>
+                        <input type="button" value="-" class="btn btn-secondary mx-2" (click)="manipularProducto(items,0)">
+                        <input type="button" value="+" class="btn btn-primary mx-2" (click)="manipularProducto(items,1)">
                     </li>
                 </ul>
             </div>

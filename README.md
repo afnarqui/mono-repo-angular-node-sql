@@ -1,3 +1,14 @@
+# ejecutar angular con docker
+
+![sql](https://res.cloudinary.com/drqk6qzo7/image/upload/v1572837779/principal_glf35j.png)
+
+![sql](https://res.cloudinary.com/drqk6qzo7/image/upload/v1572836916/correo_ecmmvv.png)
+
+```` bash
+docker-compose build
+docker run --name back -d -p 3001:3001 back_back
+````
+
 # ejecutar sql con docker
 
 [![sql](https://res.cloudinary.com/drqk6qzo7/image/upload/v1572671538/cliente_mwvjod.png)
@@ -30,19 +41,4 @@ CLAVE: clave del correo
 ````bash
 npm i
 npm start
-````
-# ejecutar nodejs con docker
-
-[![sql](https://res.cloudinary.com/drqk6qzo7/image/upload/v1572671538/cliente_mwvjod.png)
-
-```` bash
-docker-compose build
-docker run --name back -d -p 3001:3001 back_back
-````
-
-## dependencias
-````javascript
-npm install @babel/core @babel/node --save-dev
-npm install @babel/preset-env --save-dev
-
 ````

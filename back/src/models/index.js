@@ -193,4 +193,23 @@ query.productos = (request, res,params) => {
   });
 };
 
+query.ventas = (request, res,params) => {
+  let {clientesId,productosId,queHago} = params;
+  
+  const conn = new sql.ConnectionPool(config);
+  let nombreProcedimientoAlmacenado = 'buscarVentasPorCliente';
+  conn.connect(function(err) {
+    if (err) throw err;
+    const req = new sql.Request(conn);
+    req.input("clientesId", sql.Int, clientesId);
+    req.input("productosId", sql.Int, productosId);
+    req.input("queHago", sql.Int, queHago);
+    req.execute(nombreProcedimientoAlmacenado, function(err, response) {
+      if (err) throw err;
+      else conn.close();
+      return res.status(200).send(response.recordset);
+    });
+  });
+};
+
 module.exports = query;

@@ -12,7 +12,6 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   get() {
-    console.log(this.url)
     return this.http.get(`${this.url}clientes`)
   }
 
@@ -33,5 +32,10 @@ export class ClienteService {
 
   buscarProductos() {
     return this.http.get(`${this.url}productos`)
+  }
+
+  buscarventasPorCliente(valores:any) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.url + 'ventas/', JSON.stringify(valores), {headers})
   }
 }

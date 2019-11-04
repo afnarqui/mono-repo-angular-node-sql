@@ -17,4 +17,8 @@ query.productos = (req,res) => {
   cliente.productos(req,res,req.body);
 }
 
+query.ventas = (req,res) => {
+  cliente.ventas(req,res,req.body);
+}
+
 module.exports = query;
